@@ -95,5 +95,6 @@ Seciton 3.1
 
 
 Section 3.2
+	
 	For loop
 		This for loop is used to grnerate the bullets on canvas. How it will look where it will spawn are all defined here. Since we 			don't care about the number of bullets the first argument is an "_"(underscore). The function love.graphics.rectangle tells 			us to draw a 10 x 10 pixel size bullet which spawns at b.x and b.y place.
