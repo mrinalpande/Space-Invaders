@@ -10,10 +10,10 @@ All the images imported are in images folder. To run you'll have to download lov
 
 Global Section:
 	love.graphics.setDefaultfilter(min,max)
-		This is the filter funtion available in love. What this do is simple it filters the images or other visual media so it 			doesn't get pixelated or looks torn basically it makes the image smooth.
+		This is the filter funtion available in love. What this do is simple it filters the images or other visual media so it doesn't get pixelated or looks torn basically it makes the image smooth.
 
 	enemy ={}
-		Enemy table which will contain all the enemies which are spawned. This table is redelared in section 1.3.1 and is not really 			used globally but declared so as to tell love that it exists. There are two function which help enemy to spawn(see section 			1.3 & 1.4).
+		Enemy table which will contain all the enemies which are spawned. This table is redelared in section 1.3.1 and is not really used globally but declared so as to tell love that it exists. There are two function which help enemy to spawn(see section 1.3 & 1.4).
 	
 	enemies_controller={}
 		Basic table which contains data of all the enemies like size and where to spawn.
