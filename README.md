@@ -1,6 +1,6 @@
 Space invader game
 
-Tutorial: https://www.youtube.com/watch?v=FUiz1kL0QtI,https://www.youtube.com/watch?v=FeLljv5clnw
+Tutorial Series: https://www.youtube.com/watch?v=FUiz1kL0QtI
 
 Written by: Mrinal Pande
 
