@@ -1,8 +1,13 @@
 Space invader game
-Tutorial: https://www.youtube.com/watch?v=FUiz1kL0QtI
+
+Tutorial: https://www.youtube.com/watch?v=FUiz1kL0QtI,https://www.youtube.com/watch?v=FeLljv5clnw
+
 Written by: Mrinal Pande
+
 Language: Lua
+
 Engine: love 2D
+
 Artwork: Mrinal Pande
 
 This is a basic space invader game. Learning the basics of game development and learning the engine and its capabilities.
