@@ -1,12 +1,6 @@
 Space invader game
 
-<<<<<<< HEAD
 Tutorial: https://www.youtube.com/watch?v=FUiz1kL0QtI
-=======
-Tutorial Series: https://www.youtube.com/watch?v=FUiz1kL0QtI
-
-Written by: Mrinal Pande
->>>>>>> origin/Initail
 
 Language: Lua
 
@@ -18,12 +12,11 @@ This is a basic space invader game. Learning the basics of game development and 
 All the images imported are in images folder. To run you'll have to download love2d engine and just drop the folder onto the love2d.
 
 Global Section:
-
 	love.graphics.setDefaultfilter(min,max)
-		This is the filter funtion available in love. What this do is simple it filters the images or other visual media so it doesn't get pixelated or looks torn basically it makes the image smooth.
+		This is the filter funtion available in love. What this do is simple it filters the images or other visual media so it 			doesn't get pixelated or looks torn basically it makes the image smooth.
 
 	enemy ={}
-		Enemy table which will contain all the enemies which are spawned. This table is redelared in section 1.3.1 and is not really used globally but declared so as to tell love that it exists. There are two function which help enemy to spawn(see section 1.3 & 1.4).
+		Enemy table which will contain all the enemies which are spawned. This table is redelared in section 1.3.1 and is not really 			used globally but declared so as to tell love that it exists. There are two function which help enemy to spawn(see section 			1.3 & 1.4).
 	
 	enemies_controller={}
 		Basic table which contains data of all the enemies like size and where to spawn.
@@ -144,21 +137,15 @@ tick: running 60 times / second
 Section 2.1
 
 	love.keyboard.isDown("key")
-<<<<<<< HEAD
 		Inbuilt function in love to check if there is a keypress. key is the key which is pressed. The if...else logic works like if the key is pressed it does something like move or fire bullet. For key="right" it moves the player to the right by adding to its x position from player.x with the speed assigned(see section 1.1).Similarly for left it subtracts from the players x position with player.speed. key="space" fires the bullet by calling the player.fire funtion(see section 1.1.1).
-=======
-		Inbuilt function in love to check if there is a keypress. key is the key which is pressed. The if...else logic works like if the key is pressed it does something like move or fire bullet. For key="right" it moves the player to the right by adding to its x position from player.x with the speed assigned(see section 1.1). Similarly for left it subtracts from the players x position with player.speed. key="space" fires the bullet by calling the player.fire funtion(see section 1.1.1).
->>>>>>> origin/Initail
 
 
 Section 2.2
-
 	For loop
-		This for loop is used to make bullets move also there is a clean up code so that there are no memory leaks. Memory leaks are possible since we were making bullets with our space bars but we were not cleaning them up since the bullet we made first is 			still in the memory it can lead to memory leaks if the memory is not delocated. Before the loop ends there is a variable 			decrement "b.y =b.y - 10"(refer code line 50) this helps the movement of the bullet bby decreasing the y axis by 10 pixels in 			dt time.
+		This for loop is used to make bullets move also there is a clean up code so that there are no memory leaks. Memory leaks are 			possible since we were making bullets with our space bars but we were not cleaning them up since the bullet we made first is 			still in the memory it can lead to memory leaks if the memory is not delocated. Before the loop ends there is a variable 			decrement "b.y =b.y - 10"(refer code line 50) this helps the movement of the bullet bby decreasing the y axis by 10 pixels in 			dt time.
 
 
 Section 2.3
-
 	For loop 
 		This loops makes the spawned enemy move towards the character. This uses the enemies_controller.enemies table to see all the 			spawned enemies. All the enemies present in the enemies_controller.enemies will then move to the player at 0.5 px in dt.
 
