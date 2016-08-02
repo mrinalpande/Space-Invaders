@@ -1,6 +1,6 @@
 Space invader game
 
-Tutorial: https://www.youtube.com/watch?v=FUiz1kL0QtI
+Tutorial series: https://www.youtube.com/watch?v=FUiz1kL0QtI
 
 Language: Lua
 
@@ -8,8 +8,10 @@ Engine: love 2D
 
 Artwork: Mrinal Pande
 
+Sound: Create your own sound at http://www.bfxr.net/
+
 This is a basic space invader game. Learning the basics of game development and learning the engine and its capabilities.
-All the images imported are in images folder. To run you'll have to download love2d engine and just drop the folder onto the love2d.
+All the images imported are in images folder. The sounds used are in the sounds folder. To run you'll have to download love2d engine and just drop the folder onto the love2d.
 
 Global Section:
 
