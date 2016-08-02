@@ -143,11 +143,13 @@ Section 2.1
 
 
 Section 2.2
+
 	For loop
 		This for loop is used to make bullets move also there is a clean up code so that there are no memory leaks. Memory leaks are possible since we were making bullets with our space bars but we were not cleaning them up since the bullet we made first is still in the memory it can lead to memory leaks if the memory is not delocated. Before the loop ends there is a variable decrement "b.y =b.y - 10"(refer code line 50) this helps the movement of the bullet bby decreasing the y axis by 10 pixels in dt time.
 
 
 Section 2.3
+
 	For loop 
 		This loops makes the spawned enemy move towards the character. This uses the enemies_controller.enemies table to see all the spawned enemies. All the enemies present in the enemies_controller.enemies will then move to the player at 0.5 px in dt.
 
