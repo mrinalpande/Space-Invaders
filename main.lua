@@ -10,9 +10,6 @@ enemy={}
 enemies_controller = {}
 enemies_controller.enemies ={}
 
-
-
-
 --Section 1 
 function love.load()
     
@@ -24,11 +21,13 @@ function love.load()
 	player.cooldown = 20
 	player.speed = 2
 	player.image = love.graphics.newImage('images/player.png')
-    
+    	player.fire_sound=love.audio.newSource('sounds/laser.wav')
+
 	--Section 1.1.1
 	player.fire=function()
 		if player.cooldown <= 0 then
-		    player.cooldown=30        
+		    love.audio.play(player.fire_sound)
+		    player.cooldown=40        
 		    bullet={}
 		    bullet.x= player.x + 90
 		    bullet.y= player.y + 85
@@ -36,23 +35,27 @@ function love.load()
 		end
 	end
 
-	--Section 1.2	   don't forget the colen
+	--Section 1.2	   
 	enemies_controller.image= love.graphics.newImage('images/enemy.png')
+	--don't forget the colen	
 	enemies_controller:spawnEnemy(0,0)
-	enemies_controller:spawnEnemy(150,0)
+	enemies_controller:spawnEnemy(100,0)
 	
 end
 
---Section 1.3 		colen passes self else (self)
+--Section 1.3 		
+--colen passes self else use function fuction_name(self)
 function enemies_controller:spawnEnemy(x,y)
 
 	--Section 1.3.1	
 	enemy ={}
 	enemy.x=x
 	enemy.y=y
-	--enemy.bullets={}
+	enemy.width= 75
+	enemy.height= 75
+		--enemy.bullets={}
 	--enemy.cooldown = 20
-	enemy.speed = 2
+	enemy.speed = 0.2
 	table.insert(self.enemies, enemy)
 
 end
@@ -97,25 +100,39 @@ function love.update(dt)
 
 	--Section 2.3
 	for _,e in pairs(enemies_controller.enemies)do
-		e.y=e.y+0.5
+		e.y=e.y+e.speed
 	end
 
+	checkCollisions(enemies_controller.enemies,player.bullets)
 end
 
---Section 3
-function love.draw()
 
-	--Section 3.1
+--Section 3
+function checkCollisions(enemies, bullets)
+	for i, e in ipairs(enemies) do
+	    for _, b in ipairs(bullets) do
+		if b.y <= e.y + e.height and b.x > e.x and b.x < e.x + e.width then
+		    table.remove(enemies, i)
+		    table.remove(bullets, i)
+		end
+	    end
+	end
+end
+
+
+--Section 4
+function love.draw()
+	--Section 4.1
 	love.graphics.setColor(255,255,255)		
 	love.graphics.draw(player.image, player.x, player.y,0,3)
 	
-	--Section 3.2 first is rotation , width height ,skew
+	--Section 4.2 first is rotation , width height ,skew
 	love.graphics.setColor(255,255,255)
 	for _,e in pairs(enemies_controller.enemies) do
-		love.graphics.draw(enemies_controller.image, e.x,e.y,0,2)
+		love.graphics.draw(enemies_controller.image, e.x,e.y,0,1.5)
 	end
 
-	--Section 3.3
+	--Section 4.3
 	love.graphics.setColor(255,255,255)	
 	for _,b in pairs(player.bullets) do
 		love.graphics.rectangle("fill", b.x, b.y, 10, 10)

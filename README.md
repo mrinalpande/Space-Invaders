@@ -1,8 +1,11 @@
 Space invader game
+
 Tutorial: https://www.youtube.com/watch?v=FUiz1kL0QtI
-Written by: Mrinal Pande
+
 Language: Lua
+
 Engine: love 2D
+
 Artwork: Mrinal Pande
 
 This is a basic space invader game. Learning the basics of game development and learning the engine and its capabilities.
@@ -50,6 +53,11 @@ Information about the player
 	player.image = love.graphics.newImage('location')
 		This imports the image for the player in the game. Should be done in the love.load function so that the image is ready to go 			when it is in game.
 
+	player.fire_sound= love.audio.newSource('location')
+		This is the love function that helps to import the sounds for the game any sound can be added to the game with this function.
+		The sound function is initialized in the love.load() function so as to avoid memory leaks in the game. It should not be used 			in a loop as it will initialize the sound again and again making the game heavy.
+
+ 
 Section 1.1.1
 
 	player.fire = function() 
@@ -58,6 +66,8 @@ Section 1.1.1
 	player.cooldown <=0 
 		checking if the player cooldown is zero or not and if the player cooldown should be reset or not.
 
+	love.audio.play()
+		This is the function that plays the sound whenever the bullet is fired it is put inside the player.fire function so as to sync the sound with the bullet fired.
 	bullet{}
 		bullet table the contain bullets when they are made
 
@@ -127,8 +137,7 @@ tick: running 60 times / second
 Section 2.1
 
 	love.keyboard.isDown("key")
-		Inbuilt function in love to check if there is a keypress. key is the key which is pressed. The if...else logic works like if the key is pressed it does something like move or fire bullet. For key="right" it moves the player to the right by adding to its x position from player.x with the speed assigned(see section 1.1).
-Similarly for left it subtracts from the players x position with player.speed. key="space" fires the bullet by calling the player.fire funtion(see section 1.1.1).
+		Inbuilt function in love to check if there is a keypress. key is the key which is pressed. The if...else logic works like if the key is pressed it does something like move or fire bullet. For key="right" it moves the player to the right by adding to its x position from player.x with the speed assigned(see section 1.1).Similarly for left it subtracts from the players x position with player.speed. key="space" fires the bullet by calling the player.fire funtion(see section 1.1.1).
 
 
 Section 2.2
@@ -142,8 +151,26 @@ Section 2.3
 
 
 
-
 Section 3
+	function checkCollision()
+		This is the main function that checks collision and applies physics so as to remove the enemy from the table when the bullet hits the enemy. This takes up two parameters that are enemy and the bullet that are spawned.
+	
+	Basic Idea
+		The idea is that when the bullet hits the enemy it should disappear. Now to do that we need to check for the collision point at the base of the enemy and the top points of the bullets. Also we have to check for the bullet to be in a boundary of the enemy.
+
+	Algorithm
+		for i, e in ipairs(enemies) do
+		for _, b in pairs(bullets) do
+		if b.y <= e.y + e.height and b.x > e.x and b.x < e.x + e.width then
+		table.remove(enemies, i)
+
+	Explanation
+		The first for loop is the loop for all the enemies that are there in the enemy table(see global section). We take ipairs because we need the index of the enemies. The index is the reason that we are able to remove specific enemy when the bullet hits it. The second loop is for all the bullets spawned by the user which are there in the bullet table(section 1.1.1). If logic consists of the basic idea discussed above. It firsts checks for the y coordinate of the bullet which should be less than or equal to the y cordinate of the base of the enemy which is calculated by y coordinate of enemy plus the height of the enemy. Then it checks for the x boundary that the bullet hits in between the boundaries of the enemy in width by checking if the x-coordinate of the bullet is greater than x-coordinate of the enemy and also less than x-coordinate of enemy plus its width.
+
+	table.remove
+		The reason for using index is simple it makes it easier to remove elements i.e. enemies and bullets from the screen with the index which collides. Table dot remove does that. It removes the bullets and enemies with the index which collides.
+
+Section 4
 
 	love.draw()
 		This is the main funtion that helps in placing the character or other stuff. This is where the things shape, size and color 			are set.
@@ -151,7 +178,7 @@ Section 3
 	love.graphics.scale(#)
 		I have not really used it but was used in the tutorial video but sometimes it is useful. '#' is the times you want to 			increase the scale by. For #=5 makes the scale of the axis 5 times more than the origional. So if the player was 100px by 			100px after this function it will be 500px by 500px. All the existing values must be adjusted accordingly.
 
-Seciton 3.1
+Seciton 4.1
 
 	love.graphics.setColor(r,g,b)
 		This is the predefined love function used before making any shape which will determine the color of the shape. It takes three 			argument which are the color codes in rgb mode ranging from 0 to 255.
@@ -164,7 +191,7 @@ Seciton 3.1
 		This is the predefined love function used for the development of a rectangle on a canvas. It takes up 5 arguments. first 			argument is fill or line which gives a solid block or line drawing of the shape. Second and Third arguments are x and y 		location of the block where it should be placed on canvas. Fourth and fifth arguments are width and height of the of the 			shape. eg: love.graphics.rectangle("fill/line",x,y location,width,height) all in px.
 
 
-Section 3.2
+Section 4.2
 
 	love.graphics.setColor(r,g,b)
 		This is set to white so that it doen't mess with the color of the model that we are using section 1.3.1.
@@ -175,7 +202,7 @@ Section 3.2
 		NOTE: If only one parameter is given for width and height like in this case the engine will multiply the parameter to both 			width and height else individual width and height multipliers can be given. 
 	
 
-Section 3.3
+Section 4.3
 	
 	For loop
 		This for loop is used to grnerate the bullets on canvas. How it will look where it will spawn are all defined here. Since we 			don't care about the number of bullets the first argument is an "_"(underscore). The function love.graphics.rectangle tells 			us to draw a 10 x 10 pixel size bullet which spawns at b.x and b.y place.
