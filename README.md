@@ -1,4 +1,4 @@
-Space invader game
+<b>Space invader game</b>
 
 Tutorial series: https://www.youtube.com/watch?v=FUiz1kL0QtI
 
@@ -13,7 +13,7 @@ Sound: Create your own sound at http://www.bfxr.net/
 This is a basic space invader game. Learning the basics of game development and learning the engine and its capabilities.
 All the images imported are in images folder. The sounds used are in the sounds folder. To run you'll have to download love2d engine and just drop the folder onto the love2d.
 
-Global Section:
+<b>Global Section:</b>
 
 	love.graphics.setDefaultfilter(min,max)
 		This is the filter funtion available in love. What this do is simple it filters the images or other 
@@ -32,7 +32,7 @@ Global Section:
 
 
 
-Section 1:
+<b>Section 1:</b>
 
 	function love.load: 
 		Function is used to load any necessary variables structures etc, which will be used in the 
@@ -140,7 +140,7 @@ Section 1.4
 
 
 
-Section 2:
+<b>Section 2:</b>
 
 Definitions:
 
@@ -188,7 +188,7 @@ Section 2.3
 
 
 
-Section 3
+<b>Section 3</b>
 
 	function checkCollision()
 		This is the main function that checks collision and applies physics so as to remove the 
@@ -225,7 +225,7 @@ Section 3
 
 
 
-Section 4
+<b>Section 4</b>
 
 	love.draw()
 		This is the main funtion that helps in placing the character or other stuff. This 
